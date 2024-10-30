@@ -38,12 +38,38 @@ Each dataset has the following columns:
 
 ## Model Pipeline
 
+### ⚙️ <span style="color:#2E8B57;">Approach Overview</span>
+
+---
+
+1. **🔍 Text Extraction using PaddleOCR**:
+
+   - We use **PaddleOCR** to extract text from the images.
+   - This tool helps retrieve essential textual information from images accurately.
+
+2. **🧹 Text Preprocessing**:
+
+   - After extraction, the text is cleaned and preprocessed.
+   - We remove any irrelevant characters and inconsistencies to make it easier to recognize entities.
+
+3. **📑 Named Entity Recognition (NER)**:
+
+   - A custom-trained **NER model** is used to identify key entity values such as weight, voltage, and dimensions.
+   - The model predicts both the `entity_value` and the corresponding `entity_name` by locating their start and end indices.
+
+4. **🧮 Rule-based Recognition**:
+
+   - If the NER model fails, we fall back to **Rule-based Recognition**.
+   - This uses **regular expressions (regex)** to detect entities based on patterns (e.g., numerical values followed by units like "5.0 kg" or "220 volts").
+
+5. **✅ Final Entity Extraction**:
+   - The extracted entities are finalized
 
 ## Results
 
 Our model achieved the following results:
 
-- **F1 Score**: 0.04 (highest)
+- **F1 Score**: 0.4 (highest)
 - **Rank**: 290 out of 2500+ teams (74,824 Registrations)
 
 ![teamAlooParathaa](https://github.com/user-attachments/assets/8ec5cee7-4a51-4aa9-8923-8303dd85d7d6)
