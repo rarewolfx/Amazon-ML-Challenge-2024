@@ -46,7 +46,7 @@ Our model achieved the following results:
 - **F1 Score**: 0.04 (highest)
 - **Rank**: 290 out of 2500+ teams (74,824 Registrations)
 
-![teamAlooParathaa](https://github.com/user-attachments/assets/e773e036-dba7-473f-b615-8d0e1594c725)
+
 
 ## Conclusion 
 This hackathon, spanning four days, was the longest we’ve participated in so far. We faced challenges, particularly with the computational resources needed to process such a large volume of data. Processing the test.csv file, which involved downloading over **52 GB** of images and running them through an OCR model, took us collectively more than **20 hours**. Despite these obstacles, it was an invaluable experience to work on a real-world problem faced by Amazon. 
