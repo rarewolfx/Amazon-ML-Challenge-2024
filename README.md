@@ -46,6 +46,7 @@ Our model achieved the following results:
 - **F1 Score**: 0.04 (highest)
 - **Rank**: 290 out of 2500+ teams (74,824 Registrations)
 
+![teamAlooParathaa](https://github.com/user-attachments/assets/8ec5cee7-4a51-4aa9-8923-8303dd85d7d6)
 
 
 ## Conclusion 
