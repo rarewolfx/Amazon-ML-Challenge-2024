@@ -42,9 +42,13 @@ Each dataset has the following columns:
 
 ---
 
-1. **🔍 Text Extraction using PaddleOCR**:
+1. **🔍 Text Extraction using EastOCR**:
 
-   - We use **PaddleOCR** to extract text from the images.
+   - We conducted experiments with various OCR (Optical Character Recognition) technologies:
+      Tesseract
+      EasyOCR
+      KerasOCR
+   - After testing on a small sample of 100 files, we found that EasyOCR performed the best. We then proceeded to run OCR on all files in the test set.
    - This tool helps retrieve essential textual information from images accurately.
 
 2. **🧹 Text Preprocessing**:
