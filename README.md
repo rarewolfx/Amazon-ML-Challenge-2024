@@ -1,5 +1,10 @@
 # Amazon-ML-Challenge-2024
-Our team approach in Amazon ML Challenge 2024
+Our team's approach in Amazon ML Challenge 2024
+> Team Aloo Parathaaa
+> - Snehasish Haldar
+> - Yash Desai
+> - Rahul Pamnani
+> - Pranith Prasad Poojary
 ## Problem Statement: 
 ### Feature Extraction from Images
 
@@ -42,32 +47,33 @@ Each dataset has the following columns:
 
 ---
 
-1. **🔍 Text Extraction using EastOCR**:
+1. **🧹 Preprocessing**
 
-   - We conducted experiments with various OCR (Optical Character Recognition) technologies:
-      Tesseract
-      EasyOCR
-      KerasOCR
-   - After testing on a small sample of 100 files, we found that EasyOCR performed the best. We then proceeded to run OCR on all files in the test set.
-   - This tool helps retrieve essential textual information from images accurately.
+   - Images are first converted to grayscale using OpenCV’s cvtColor() function. Grayscale conversion reduces complexity and enhances contrast, ensuring better OCR performance.
+   - For images containing dimension-related entities (e.g., height, width, depth), a line detection algorithm is applied. Using OpenCV's cv2.Canny and cv2.HoughLinesP, bounding boxes are filtered to locate and align relevant numeric values and their units.
 
-2. **🧹 Text Preprocessing**:
+2. **🔍 Text Extraction (OCR)**
 
-   - After extraction, the text is cleaned and preprocessed.
-   - We remove any irrelevant characters and inconsistencies to make it easier to recognize entities.
+   - Multiple OCR tools were evaluated, including Tesseract, EasyOCR, and PaddleOCR. EasyOCR was selected for its speed and practicality, despite occasional blank outputs (~40% of the dataset).
+   - OCR is applied to extract textual data from images, with each process optimized to complete in ~0.2 seconds per image.
 
-3. **📑 Named Entity Recognition (NER)**:
+3. **📑 Postprocessing**
 
-   - A custom-trained **NER model** is used to identify key entity values such as weight, voltage, and dimensions.
-   - The model predicts both the `entity_value` and the corresponding `entity_name` by locating their start and end indices.
+   - ***Text Parsing:*** Custom regular expressions (regex) are employed to filter and extract numeric values alongside their respective units (e.g., kilograms, volts). These regex patterns account for decimals, commas, and multiple units in a sentence.
+   - ***Unit Standardization:*** Extracted values are normalized to a common unit (e.g., converting cm to mm) for consistency in output.
 
-4. **🧮 Rule-based Recognition**:
+4. **🧮 Rule-based Recognition**
 
-   - If the NER model fails, we fall back to **Rule-based Recognition**.
-   - This uses **regular expressions (regex)** to detect entities based on patterns (e.g., numerical values followed by units like "5.0 kg" or "220 volts").
+   - A rule-based approach using regex ensures the identification of critical entities. For instance:
+      - ***Weight:*** Extracts values with units like grams, kilograms, or pounds.
+      - ***Voltage:*** Identifies values in volts, millivolts, or kilovolts.
+      - ***Dimensions:*** Detects numeric values associated with units like cm, mm, or inches.
+   - This method ensures accurate extraction without requiring a machine-learning-based model.
 
-5. **✅ Final Entity Extraction**:
-   - The extracted entities are finalized
+5. **✅ Final Output**
+
+   - Extracted entities are finalized and stored in a structured CSV file, enabling seamless integration and analysis.
+   - Each row contains the image index and corresponding entity values in a standardized format.
 
 ## Results
 
