@@ -1,5 +1,6 @@
 # Amazon-ML-Challenge-2024
 Our team's approach in Amazon ML Challenge 2024
+[For detailed documentation, click here](./Amazon%20ML%20Challenge%202024%20Documentation.pdf)
 > Team Aloo Parathaaa
 > - Snehasish Haldar
 > - Yash Desai
